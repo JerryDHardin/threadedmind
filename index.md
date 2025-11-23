@@ -1,8 +1,14 @@
 # Threaded Mind
 
-This is the home of the Total Weave ecosystem.
+A personal studio for code, stories, logs, and experiments.
 
-- Wmcy — local AI assistant project  
-- IcePick — puzzle game  
-- MyChat Logs — archive of conversations  
-- ARG (Hauntware) — narrative layer  
+## Logs & Archives
+- [AIchat Prologue](./logs/prologue/)  
+- MyChat logs (coming later)
+
+## Projects
+- [Wmcy – local AI assistant](./projects/wmcy.md)
+- [IcePick v2 – puzzle game](./projects/icepick.md)
+
+## About
+- [What Threaded Mind is](./about/)
