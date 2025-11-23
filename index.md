@@ -3,7 +3,7 @@
 A personal studio for code, stories, logs, and experiments.
 
 ## Logs & Archives
-- [AIchat Prologue](./logs/prologue/)  
+- [AIchat Prologue](./logs/prologue/)
 - MyChat logs (coming later)
 
 ## Projects
