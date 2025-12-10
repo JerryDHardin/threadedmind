@@ -73,11 +73,19 @@
     });
   }
 
-    // ABOUT ACCORDIONS
+  // ABOUT ACCORDIONS
   const aboutBlocks = Array.from(document.querySelectorAll(".about-block"));
   const aboutToggles = Array.from(document.querySelectorAll(".about-toggle"));
 
   if (aboutBlocks.length && aboutToggles.length) {
+    // Helper: open a block by id (used on page load + hash)
+    function openBlockById(id) {
+      const block = aboutBlocks.find((b) => b.id === id);
+      if (block) {
+        block.classList.add("open");
+      }
+    }
+
     aboutToggles.forEach((btn) => {
       btn.addEventListener("click", () => {
         const block = btn.closest(".about-block");
@@ -86,19 +94,31 @@
         const key = block.id;
         const alreadyOpen = block.classList.contains("open");
 
-        // Just toggle this one, don't touch the others
+        // Toggle ONLY this block, leave others alone
         block.classList.toggle("open");
 
-        // Update URL hash to the last toggled section (or clear if you just closed it)
+        // Update URL hash to the last toggled section (or clear if just closed)
         if (history.replaceState) {
           if (!alreadyOpen) {
             history.replaceState(null, "", "#" + key);
           } else {
-            history.replaceState(null, "", " ");
+            // Clear hash but keep path + query
+            const url = location.pathname + location.search;
+            history.replaceState(null, "", url);
           }
         }
       });
     });
+
+    // On load: open the hashed section if present, otherwise open "who"
+    const hash = location.hash.replace("#", "");
+    if (hash) {
+      openBlockById(hash);
+    } else {
+      openBlockById("who");
+    }
+  }
+
 
     // On load: open the hashed section if present, otherwise open "who"
     const hash = location.hash.replace("#", "");
