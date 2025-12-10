@@ -191,16 +191,22 @@ h1 {
   list-style: none;
   margin: 0 0 20px 0;
   padding: 0;
+
   display: grid;
-  grid-template-columns: repeat(3, max-content); /* Who What Where on row 1 */
-  column-gap: 10px;
+  grid-template-columns: repeat(4, max-content);
+  justify-content: start;
+  column-gap: 12px;
   row-gap: 4px;
 }
 
-/* 5 W links look the same, just laid out by grid now */
-.sidebar li + li {
-  margin-top: 0; /* grid handles spacing */
+.sidebar ul li:nth-child(4) {
+  grid-column: 2; /* Where */
 }
+
+.sidebar ul li:nth-child(5) {
+  grid-column: 3; /* Why */
+}
+
 
 .sidebar a {
   text-decoration: none;
