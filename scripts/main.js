@@ -109,17 +109,7 @@
         }
       });
     });
-
-    // On load: open the hashed section if present, otherwise open "who"
-    const hash = location.hash.replace("#", "");
-    if (hash) {
-      openBlockById(hash);
-    } else {
-      openBlockById("who");
-    }
-  }
-
-
+    
     // On load: open the hashed section if present, otherwise open "who"
     const hash = location.hash.replace("#", "");
     if (hash) {
