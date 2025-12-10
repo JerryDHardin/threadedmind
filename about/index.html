@@ -1,133 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <title>About · Threadedminds.dev</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="../about-shared.css" />
-  <!--
-    For now, you can literally copy the <style> block from index.html
-    into here instead of using an external CSS file.
-    The important part is the body structure and JS below.
-  -->
-  <style>
-    /* you can paste the same CSS from index.html here to keep look identical */
-  </style>
-</head>
-<body>
-  <div class="page">
-    <div class="shell">
-      <header class="top-bar">
-        <div class="logo-box">
-          <span>Logo?</span>
-        </div>
-        <div class="title-block">
-          <div class="title-row">
-            <div>
-              <h1><a href="../" style="text-decoration:none;color:inherit;">Threadedminds.dev</a></h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>About · Threadedminds.dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="https://threadedminds-umami.fly.dev/script.js" data-website-id="dcd76c73-ec69-4e45-8ca3-22ae7798086b"></script>
+    <script src="/scripts/main.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="shell">
+        <header class="top-bar">
+          <div class="logo-box">
+            <span>Logo?</span>
+          </div>
+          <div class="title-block">
+            <div class="title-row">
+              <div>
+                <h1><a href="/" style="text-decoration:none;color:inherit;">Threadedminds.dev</a></h1>
+                <div class="subtitle">about this archive</div>
+              </div>
+              <div class="theme-switcher">
+                <span>Theme</span>
+                <select id="themeSelect" aria-label="Choose theme">
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="terminal">Terminal</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <div class="layout">
-        <nav class="sidebar" aria-label="About navigation">
-          <ul>
-            <li><a href="#who">Who</a></li>
-            <li><a href="#what">What</a></li>
-            <li><a href="#when">When</a></li>
-            <li><a href="#where">Where</a></li>
-            <li><a href="#why">Why</a></li>
-          </ul>
-        </nav>
+        <div class="layout">
+          <nav class="sidebar" aria-label="About navigation">
+            <ul>
+              <li><a href="#who">Who</a></li>
+              <li><a href="#what">What</a></li>
+              <li><a href="#when">When</a></li>
+              <li><a href="#where">Where</a></li>
+              <li><a href="#why">Why</a></li>
+            </ul>
+            <div class="sidebar-extra">
+              <a href="/about/how-it-started.html">How it started</a>
+              <a href="/about/how-its-going.html">How it's going</a>
+            </div>
+          </nav>
 
-        <main class="main-column">
-          <section id="aboutAccordions">
+          <main class="main-column about-main">
             <article class="about-block" id="who">
-              <button class="about-toggle" data-key="who">
-                Who
-              </button>
+              <button class="about-toggle" data-key="who">Who</button>
               <div class="about-body">
-                <p>Longer “who I am” text goes here. This one will auto-expand when you arrive with #who in the URL.</p>
+                <p>
+                  Placeholder for the “who I am” section. You can talk about yourself
+                  in whatever level of abstraction feels right: first-person, third-person,
+                  pseudonyms, etc.
+                </p>
               </div>
             </article>
 
             <article class="about-block" id="what">
-              <button class="about-toggle" data-key="what">
-                What
-              </button>
+              <button class="about-toggle" data-key="what">What</button>
               <div class="about-body">
-                <p>What this site is, what the logs are, what’s canon vs slice-of-life, etc.</p>
+                <p>
+                  Placeholder for “what this site is”: a curated set of ChatGPT logs,
+                  commentary, narrative slices, and the groundwork for Hauntware / ARG-ish
+                  layers.
+                </p>
               </div>
             </article>
 
             <article class="about-block" id="when">
-              <button class="about-toggle" data-key="when">
-                When
-              </button>
+              <button class="about-toggle" data-key="when">When</button>
               <div class="about-body">
-                <p>Timeline of when these logs roughly happen, VA years, divorce timing, etc.</p>
+                <p>
+                  Placeholder for rough timelines: when conversations happened, when logs
+                  start, and where they overlap with VA, divorce, sobriety, etc.
+                </p>
               </div>
             </article>
 
             <article class="about-block" id="where">
-              <button class="about-toggle" data-key="where">
-                Where
-              </button>
+              <button class="about-toggle" data-key="where">Where</button>
               <div class="about-body">
-                <p>Where it was written (digitally), where names are altered/redacted, how “place” is treated.</p>
+                <p>
+                  Placeholder for “where” in both physical and digital space: home, work,
+                  Discord, Obsidian vaults, GitHub, etc. Also where names are redacted or
+                  altered.
+                </p>
               </div>
             </article>
 
             <article class="about-block" id="why">
-              <button class="about-toggle" data-key="why">
-                Why
-              </button>
+              <button class="about-toggle" data-key="why">Why</button>
               <div class="about-body">
-                <p>The big one: why you’re publishing any of this at all, and what you hope people get from it.</p>
+                <p>
+                  Placeholder for the big “why”: why these logs exist, why they’re public,
+                  what someone might get from reading them, and how the Hauntware / daemon
+                  themes tie in.
+                </p>
               </div>
             </article>
-          </section>
-        </main>
+          </main>
+        </div>
       </div>
     </div>
-  </div>
-
-  <script>
-    (function () {
-      const blocks = Array.from(document.querySelectorAll(".about-block"));
-      const toggles = Array.from(document.querySelectorAll(".about-toggle"));
-
-      function setOpen(key) {
-        blocks.forEach(block => {
-          const isMatch = block.id === key;
-          block.classList.toggle("open", isMatch);
-        });
-      }
-
-      toggles.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const key = btn.dataset.key;
-          const isAlready = btn.parentElement.classList.contains("open");
-          blocks.forEach(b => b.classList.remove("open"));
-          if (!isAlready) {
-            setOpen(key);
-            history.replaceState(null, "", "#" + key);
-          } else {
-            history.replaceState(null, "", " ");
-          }
-        });
-      });
-
-      // auto-open based on hash
-      const hash = location.hash.replace("#", "");
-      if (hash) {
-        setOpen(hash);
-      }
-
-      // optional: default open "who"
-      if (!hash) setOpen("who");
-    })();
-  </script>
-</body>
+  </body>
 </html>
