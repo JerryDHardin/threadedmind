@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>About · Threadedminds.dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../about-shared.css" />
+  <!--
+    For now, you can literally copy the <style> block from index.html
+    into here instead of using an external CSS file.
+    The important part is the body structure and JS below.
+  -->
+  <style>
+    /* you can paste the same CSS from index.html here to keep look identical */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header class="top-bar">
+        <div class="logo-box">
+          <span>Logo?</span>
+        </div>
+        <div class="title-block">
+          <div class="title-row">
+            <div>
+              <h1><a href="../" style="text-decoration:none;color:inherit;">Threadedminds.dev</a></h1>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <nav class="sidebar" aria-label="About navigation">
+          <ul>
+            <li><a href="#who">Who</a></li>
+            <li><a href="#what">What</a></li>
+            <li><a href="#when">When</a></li>
+            <li><a href="#where">Where</a></li>
+            <li><a href="#why">Why</a></li>
+          </ul>
+        </nav>
+
+        <main class="main-column">
+          <section id="aboutAccordions">
+            <article class="about-block" id="who">
+              <button class="about-toggle" data-key="who">
+                Who
+              </button>
+              <div class="about-body">
+                <p>Longer “who I am” text goes here. This one will auto-expand when you arrive with #who in the URL.</p>
+              </div>
+            </article>
+
+            <article class="about-block" id="what">
+              <button class="about-toggle" data-key="what">
+                What
+              </button>
+              <div class="about-body">
+                <p>What this site is, what the logs are, what’s canon vs slice-of-life, etc.</p>
+              </div>
+            </article>
+
+            <article class="about-block" id="when">
+              <button class="about-toggle" data-key="when">
+                When
+              </button>
+              <div class="about-body">
+                <p>Timeline of when these logs roughly happen, VA years, divorce timing, etc.</p>
+              </div>
+            </article>
+
+            <article class="about-block" id="where">
+              <button class="about-toggle" data-key="where">
+                Where
+              </button>
+              <div class="about-body">
+                <p>Where it was written (digitally), where names are altered/redacted, how “place” is treated.</p>
+              </div>
+            </article>
+
+            <article class="about-block" id="why">
+              <button class="about-toggle" data-key="why">
+                Why
+              </button>
+              <div class="about-body">
+                <p>The big one: why you’re publishing any of this at all, and what you hope people get from it.</p>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const blocks = Array.from(document.querySelectorAll(".about-block"));
+      const toggles = Array.from(document.querySelectorAll(".about-toggle"));
+
+      function setOpen(key) {
+        blocks.forEach(block => {
+          const isMatch = block.id === key;
+          block.classList.toggle("open", isMatch);
+        });
+      }
+
+      toggles.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const key = btn.dataset.key;
+          const isAlready = btn.parentElement.classList.contains("open");
+          blocks.forEach(b => b.classList.remove("open"));
+          if (!isAlready) {
+            setOpen(key);
+            history.replaceState(null, "", "#" + key);
+          } else {
+            history.replaceState(null, "", " ");
+          }
+        });
+      });
+
+      // auto-open based on hash
+      const hash = location.hash.replace("#", "");
+      if (hash) {
+        setOpen(hash);
+      }
+
+      // optional: default open "who"
+      if (!hash) setOpen("who");
+    })();
+  </script>
+</body>
+</html>
