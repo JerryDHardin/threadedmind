@@ -82,7 +82,8 @@ a {
   border-radius: 28px;
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border-subtle);
-  max-width: 1080px;
+  margin: 0 auto;
+  max-width: 1100px;
   width: 100%;
   padding: 22px 22px 26px;
   display: flex;
@@ -166,9 +167,11 @@ h1 {
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(110px, 140px) minmax(0, 1fr);
+  grid-template-columns: 200px 1fr minmax(110px, 140px) minmax(0, 1fr);
   gap: 20px;
   margin-top: 4px;
+  align-items: flex-start;
+
 }
 
 /* LEFT RAIL */
@@ -180,10 +183,15 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
+  top: 90px; /* keeps it right under the header */
+  align-self: start;
+  height: fit-content;
 }
 
 .sidebar ul {
   list-style: none;
+  margin-bottom: 20px;
   margin: 0;
   padding: 0;
 }
@@ -208,9 +216,10 @@ h1 {
 }
 
 .sidebar-extra {
+  margin: 4px 0;
   margin-top: 18px;
   font-size: 0.78rem;
-  display: flex;
+  display: block;
   flex-direction: column;
   gap: 4px;
 }
@@ -218,6 +227,8 @@ h1 {
 .sidebar-extra a {
   text-decoration: none;
   color: var(--text-muted);
+  display: block;
+  margin: 4px 0;
 }
 
 .sidebar-extra a:hover {
@@ -227,6 +238,7 @@ h1 {
 /* MAIN COLUMN */
 
 .main-column {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
