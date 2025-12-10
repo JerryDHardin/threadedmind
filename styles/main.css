@@ -72,7 +72,7 @@ a {
 .page {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;      /* sit near top, not vertically centered */
+  align-items: flex-start; /* sit near top, not vertically centered */
   justify-content: center;
   padding: 24px;
 }
@@ -83,7 +83,7 @@ a {
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border-subtle);
   margin: 0 auto;
-  max-width: 1200px;            /* bump this up if you want it wider: 1300, 1400, etc. */
+  max-width: 1200px; /* tweak if you want wider/narrower */
   width: 100%;
   padding: 22px 22px 26px;
   display: flex;
@@ -164,6 +164,7 @@ h1 {
 }
 
 /* LAYOUT: LEFT RAIL + MAIN COLUMN */
+
 .layout {
   display: grid;
   grid-template-columns: minmax(140px, 200px) minmax(0, 1fr); /* sidebar + main */
@@ -180,22 +181,34 @@ h1 {
   padding-top: 4px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* keep everything at top */
+  justify-content: flex-start; /* keep everything at top */
   position: sticky;
-  top: 90px;                     /* sits under header */
+  top: 90px; /* sits under header */
   align-self: start;
   height: fit-content;
 }
 
+/* 5-W pyramid layout on desktop */
 .sidebar ul {
   list-style: none;
   margin: 0 0 20px 0;
   padding: 0;
 
   display: grid;
-  grid-template-columns: repeat(5, max-content);
+  grid-template-columns: repeat(3, max-content);
   column-gap: 12px;
   row-gap: 4px;
+}
+
+.sidebar ul li:nth-child(1) { grid-column: 1; } /* Who  */
+.sidebar ul li:nth-child(2) { grid-column: 2; } /* What */
+.sidebar ul li:nth-child(3) { grid-column: 3; } /* When */
+.sidebar ul li:nth-child(4) { grid-column: 2; } /* Where */
+.sidebar ul li:nth-child(5) { grid-column: 3; } /* Why   */
+
+/* grid handles vertical spacing, so remove li gap */
+.sidebar li + li {
+  margin-top: 0;
 }
 
 .sidebar a {
@@ -454,7 +467,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* LOGS LIST */
+/* LOG CONTENT */
 
 .log-pre {
   white-space: pre-wrap;        /* keep your line breaks */
@@ -466,6 +479,8 @@ h1 {
   margin-top: 8px;
   max-width: 100%;
 }
+
+/* LOGS LIST */
 
 .logs-list {
   margin-top: 10px;
@@ -486,52 +501,7 @@ h1 {
   font-weight: 500;
 }
 
-.sidebar ul:first-of-type {
-  list-style: none;
-  margin: 0 0 20px 0;
-  padding: 0;
-
-  display: grid !important;
-  grid-template-columns: repeat(5, max-content) !important;
-  column-gap: 12px !important;
-  row-gap: 4px !important;
-}
-
-.sidebar ul:first-of-type li:nth-child(1) { grid-column: 1; }
-.sidebar ul:first-of-type li:nth-child(2) { grid-column: 2; }
-.sidebar ul:first-of-type li:nth-child(3) { grid-column: 3; }
-
-.sidebar ul:first-of-type li:nth-child(4) { grid-column: 2; }
-.sidebar ul:first-of-type li:nth-child(5) { grid-column: 3; }
 /* RESPONSIVE */
-
-
-@media (min-width: 781px) {
-  .sidebar > ul {
-    list-style: none;
-    margin: 0 0 20px 0;
-    padding: 0;
-
-    display: grid;
-    grid-template-columns: repeat(5, max-content);
-    column-gap: 12px;
-    row-gap: 4px;
-  }
-
-  /* Top row: Who  What  When */
-  .sidebar > ul li:nth-child(1) { grid-column: 1; } /* Who   */
-  .sidebar > ul li:nth-child(2) { grid-column: 2; } /* What  */
-  .sidebar > ul li:nth-child(3) { grid-column: 3; } /* When  */
-
-  /* Second row centered under them:   Where  Why   */
-  .sidebar > ul li:nth-child(4) { grid-column: 2; } /* Where */
-  .sidebar > ul li:nth-child(5) { grid-column: 3; } /* Why   */
-
-  /* kill any vertical stacking from older rules */
-  .sidebar li + li {
-    margin-top: 0;
-  }
-}
 
 @media (max-width: 780px) {
   .shell {
