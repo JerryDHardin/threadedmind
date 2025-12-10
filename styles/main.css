@@ -497,6 +497,34 @@ h1 {
 
 /* RESPONSIVE */
 
+
+@media (min-width: 781px) {
+  .sidebar > ul {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    column-gap: 12px;
+    row-gap: 4px;
+  }
+
+  /* Top row: Who  What  When */
+  .sidebar > ul li:nth-child(1) { grid-column: 1; } /* Who   */
+  .sidebar > ul li:nth-child(2) { grid-column: 2; } /* What  */
+  .sidebar > ul li:nth-child(3) { grid-column: 3; } /* When  */
+
+  /* Second row centered under them:   Where  Why   */
+  .sidebar > ul li:nth-child(4) { grid-column: 2; } /* Where */
+  .sidebar > ul li:nth-child(5) { grid-column: 3; } /* Why   */
+
+  /* kill any vertical stacking from older rules */
+  .sidebar li + li {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 780px) {
   .shell {
     padding: 18px 14px 20px;
