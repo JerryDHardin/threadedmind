@@ -73,42 +73,44 @@
     });
   }
 
-  // ABOUT ACCORDIONS
+    // ABOUT ACCORDIONS
   const aboutBlocks = Array.from(document.querySelectorAll(".about-block"));
   const aboutToggles = Array.from(document.querySelectorAll(".about-toggle"));
 
   if (aboutBlocks.length && aboutToggles.length) {
-    function setOpen(key) {
-      aboutBlocks.forEach((block) => {
-        const isMatch = block.id === key;
-        block.classList.toggle("open", isMatch);
-      });
-    }
-
     aboutToggles.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const key = btn.dataset.key;
         const block = btn.closest(".about-block");
-        const already = block.classList.contains("open");
+        if (!block) return;
 
-        aboutBlocks.forEach((b) => b.classList.remove("open"));
+        const key = block.id;
+        const alreadyOpen = block.classList.contains("open");
 
-        if (!already) {
-          setOpen(key);
-          if (history.replaceState) {
+        // Just toggle this one, don't touch the others
+        block.classList.toggle("open");
+
+        // Update URL hash to the last toggled section (or clear if you just closed it)
+        if (history.replaceState) {
+          if (!alreadyOpen) {
             history.replaceState(null, "", "#" + key);
+          } else {
+            history.replaceState(null, "", " ");
           }
-        } else if (history.replaceState) {
-          history.replaceState(null, "", " ");
         }
       });
     });
 
+    // On load: open the hashed section if present, otherwise open "who"
     const hash = location.hash.replace("#", "");
     if (hash) {
-      setOpen(hash);
+      const target = aboutBlocks.find((block) => block.id === hash);
+      if (target) {
+        target.classList.add("open");
+      }
     } else {
-      setOpen("who");
+      const whoBlock = document.getElementById("who");
+      if (whoBlock) {
+        whoBlock.classList.add("open");
+      }
     }
   }
-})();
