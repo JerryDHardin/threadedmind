@@ -329,6 +329,8 @@ h1 {
 /* LATEST POST CARD */
 
 .latest-card {
+  box-sizing: border-box;
+  max-width: 100%;
   margin-top: 2px;
   padding: 14px 14px 12px;
   border-radius: var(--radius-lg);
@@ -457,6 +459,17 @@ h1 {
 }
 
 /* LOGS LIST */
+
+.log-pre {
+  white-space: pre-wrap;        /* keep your line breaks */
+  word-break: break-word;       /* break long “words” if needed */
+  overflow-wrap: anywhere;      /* extra safety for weird segments */
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 100%;
+}
 
 .logs-list {
   margin-top: 10px;
