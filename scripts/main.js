@@ -73,47 +73,26 @@
     });
   }
 
-  // ABOUT ACCORDIONS
-  const aboutBlocks = Array.from(document.querySelectorAll(".about-block"));
-  const aboutToggles = Array.from(document.querySelectorAll(".about-toggle"));
+   // ABOUT ACCORDIONS
+  const aboutBlocks = document.querySelectorAll(".about-block");
+  const aboutToggles = document.querySelectorAll(".about-toggle");
 
   if (aboutBlocks.length && aboutToggles.length) {
-    // Helper: open a block by id (used on page load + hash)
-    function openBlockById(id) {
-      const block = aboutBlocks.find((b) => b.id === id);
-      if (block) {
-        block.classList.add("open");
-      }
-    }
-
+    // Attach simple toggle handlers
     aboutToggles.forEach((btn) => {
       btn.addEventListener("click", () => {
         const block = btn.closest(".about-block");
         if (!block) return;
 
-        const key = block.id;
-        const alreadyOpen = block.classList.contains("open");
-
-        // Toggle ONLY this block, leave others alone
+        // Toggle only this block
         block.classList.toggle("open");
-
-        // Update URL hash to the last toggled section (or clear if just closed)
-        if (history.replaceState) {
-          if (!alreadyOpen) {
-            history.replaceState(null, "", "#" + key);
-          } else {
-            // Clear hash but keep path + query
-            const url = location.pathname + location.search;
-            history.replaceState(null, "", url);
-          }
-        }
       });
     });
-    
+
     // On load: open the hashed section if present, otherwise open "who"
-    const hash = location.hash.replace("#", "");
+    const hash = window.location.hash.slice(1);
     if (hash) {
-      const target = aboutBlocks.find((block) => block.id === hash);
+      const target = document.getElementById(hash);
       if (target) {
         target.classList.add("open");
       }
@@ -124,3 +103,4 @@
       }
     }
   }
+})();
