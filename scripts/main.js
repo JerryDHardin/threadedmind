@@ -89,6 +89,26 @@
       });
     });
 
+    // LOG SPEAKER HIGHLIGHTING
+const logPres = document.querySelectorAll(".log-pre");
+
+logPres.forEach((pre) => {
+  let html = pre.innerHTML;
+
+  // Normalize labels
+  html = html.replace(
+    /^You said:/gm,
+    '<span class="speaker speaker-user">User said:</span>'
+  );
+
+  html = html.replace(
+    /^ChatGPT said:/gm,
+    '<span class="speaker speaker-gpt">ChatGPT said:</span>'
+  );
+
+  pre.innerHTML = html;
+});
+
     // On load: open the hashed section if present, otherwise open "who"
     const hash = window.location.hash.slice(1);
     if (hash) {
