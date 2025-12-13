@@ -501,6 +501,28 @@ h1 {
   font-weight: 500;
 }
 
+.welcome {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.welcome a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(125, 211, 252, 0.5);
+}
+
+.welcome a:hover {
+  border-bottom-style: solid;
+}
+
+.welcome .note {
+  font-size: 0.75rem;
+  margin-top: 12px;
+  opacity: 0.8;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 780px) {
